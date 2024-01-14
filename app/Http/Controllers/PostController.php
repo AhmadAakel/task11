@@ -122,9 +122,38 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $this->authorize('delete', $post);
 
         $post->delete();
+
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+    }
+
+    public function trash(){
+        $trashedPosts = Post::onlyTrashed()->get();
+        return view('posts.archived',compact('trashedPosts'));
+    }
+    public function restore($id){
+        $post = Post::withTrashed()->find($id);
+        if($post){
+            $post->restore();
+            return redirect()->route('posts.index')->with('success','User unarhive successfully');
+        }
+        return redirect()->route('post.index')->with('error','post not found');  
+      }
+
+    public function forceDelete($id){
+        $post = Post::withTrashed()->find($id);
+        if($post){
+            $post->forceDelete();
+            return redirect()->route('posts.index')->with('success','post Deleted successfully');
+        }
+        return redirect()->route('posts.index')->with('error','post not found');  
+      }
+      public function delete(Post $post)
+    {
+        $this->authorize('delete', $post);
+
+        $post->forceDelete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }

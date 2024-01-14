@@ -23,24 +23,17 @@
                         <a class="nav-link" href="{{ route('posts.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('posts.create') }}">Create Post</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('categories.index') }}">Category</a>
+                        <a class="nav-link" href="{{ route('users.index') }}">Users</a>
                     </li>
-                    @if(auth()->user()->is_admin)
-                    <li>
-                        <a class="nav-link" href="{{ route('categories.create') }}">Create Category</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                     </li>
-                    @endif
                     <li>
                         <a class="nav-link" href="{{ route('tags.index') }}">Tags</a>
                     </li>
-                    @if(auth()->user()->is_admin)
-                    <li>
-                        <a class="nav-link" href="{{ route('tags.create') }}">Create Tag</a>
-                    </li>
-                    @endif
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     @auth
@@ -55,9 +48,6 @@
                         <!-- If user is a guest, show login and register links -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     @endauth
                 </ul>

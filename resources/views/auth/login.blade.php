@@ -25,9 +25,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
-            <p class="text-center mt-3">
-                Don't have an account? <a href="{{ route('register') }}">Register</a>
-            </p>
         </div>
     </div>
 </body>

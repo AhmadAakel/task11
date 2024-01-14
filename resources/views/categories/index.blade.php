@@ -3,8 +3,8 @@
 @section('title', 'categories')
 
 @section('content')
+<a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm mb-5">Create Category</a>
     <div class="container">
-        <h1 class="my-4">categories</h1>
         <div class="row">
             @forelse ($categories as $category)
                 <div class="col-md-4 mb-4">

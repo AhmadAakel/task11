@@ -16,24 +16,27 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required' 
         ]);
-
-        if (Auth::attempt($credentials)) {
+        $user = User::where('email', $request->email)->first();
+        if($user->is_admin){
+            if (Auth::attempt($credentials)) {
+            
             $request->session()->regenerate();
 
             return redirect()->intended('/'); // Redirect to home or intended page
-        }
-
+            }
+        }else
+        
         return back()->withErrors(['email' => 'Invalid credentials']);
     }
 
-    public function showRegistrationForm()
+    /* public function showRegistrationForm()
     {
         return view('auth.register');
-    }
+    } */
 
-    public function register(Request $request)
+    /* public function register(Request $request)
     {
       
         $request->validate([
@@ -57,11 +60,11 @@ class AuthController extends Controller
         }
         $user->save();
       
-       /*  $user = User::create($validatedData); */
+        $user = User::create($validatedData);
         Auth::login($user);
 
-        return redirect('/'); // Redirect to home or intended page
-    }
+        return redirect('/'); 
+    } */
 
     public function logout(Request $request)
     {

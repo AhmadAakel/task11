@@ -3,8 +3,12 @@
 namespace App\Providers;
 use App\Policies\CategoryPolicy;
 use App\Models\Category;
+use App\Policies\PostPolicy;
+use App\Models\Post;
 use App\Policies\TagPolicy;
 use App\Models\Tag;
+use App\Policies\CommentPolicy;
+use App\Models\Comment;
 
 
 

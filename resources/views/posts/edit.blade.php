@@ -20,15 +20,14 @@
                 <div class="form-group">
                 <select class="form-select" aria-label="Default select example" name="tag_id[]" multiple>
                     @foreach($tags as $tag)
-                    <option value={{$tag->id}}>{{$tag->name}}</option>
+                    <option selected value={{$tag->id}}>{{$tag->name}}</option>
                     @endforeach
                   </select>
                 </div>
                   <div class="form-group">
                 <select class="form-select" aria-label="Default select example" name="category_id">
-                    <option selected>categories</option>
                     @foreach($categories as $category)
-                    <option value={{$category->id}}>{{$category->name}}</option>
+                    <option selected value={{$category->id}}>{{$category->name}}</option>
                     @endforeach
                   </select>
                   </div>
